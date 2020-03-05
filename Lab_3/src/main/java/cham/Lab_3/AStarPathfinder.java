@@ -4,27 +4,27 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- * This class contains the implementation of the A* pathfinding algorithm.  The
- * algorithm is implemented as a static method, since the pathfinding algorithm
- * really doesn't need to maintain any state between invocations of the
- * algorithm.
+  * Этот класс содержит реализацию алгоритма поиска пути A *.
+  * алгоритм реализован как статический метод, так как алгоритм поиска пути
+  * на самом деле не нужно поддерживать какое-либо состояние между вызовами
+  * алгоритм.
  */
 public class AStarPathfinder
 {
     /**
-     * This constant holds a maximum cutoff limit for the cost of paths.  If a
-     * particular waypoint happens to exceed this cost limit, the waypoint is
-     * discarded.
+     * Эта константа содержит максимальный предел отсечения для стоимости путей. Если
+     * конкретная путевая точка превышает этот предел стоимости, путевая точка
+     * отбрасывается
      **/
     public static final float COST_LIMIT = 1e6f;
 
     
     /**
-     * Attempts to compute a path that navigates between the start and end
-     * locations of the specified map.  If a path can be found, the waypoint of
-     * the <em>final</em> step in the path is returned; that waypoint can be
-     * used to walk backwards to the starting point.  If no path can be found,
-     * <code>null</code> is returned.
+     * Попытки вычислить путь, который перемещается между началом и концом
+     * местоположения указанной карты. Если путь может быть найден, путевая точка
+     * возвращается <em> finsl </ em> шаг в пути; эта точка может быть
+     * используется, чтобы идти назад к начальной точке. Если путь не найден,
+     * <code> null </ code> возвращается.
      **/
     public static Waypoint computePath(Map2D map)
     {
@@ -65,9 +65,9 @@ public class AStarPathfinder
     }
 
     /**
-     * This static helper method takes a waypoint, and generates all valid "next
-     * steps" from that waypoint.  The new waypoints are added to the "open
-     * waypoints" collection of the passed-in A* state object.
+     * Этот статический вспомогательный метод берет путевую точку и генерирует все действительные
+     * шаги "от этой путевой точки. Новые путевые точки добавляются к" открытой
+     * waypoints "коллекция переданного A * объекта состояния.
      **/
     private static void takeNextStep(Waypoint currWP, AStarState state)
     {

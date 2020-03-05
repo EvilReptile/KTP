@@ -1,5 +1,7 @@
 package cham.Lab_3;
 
+import java.util.Objects;
+
 /**
  * This class represents a specific location in a 2D map.  Coordinates are
  * integer values.
@@ -26,15 +28,18 @@ public class Location
         this(0, 0);
     }
     
-    public boolean equals(Location location) {
+    @Override 
+    public boolean equals(Object loc) {
+    	Location location = (Location) loc;
+    	
     	if(location.xCoord == this.xCoord && location.yCoord == this.yCoord)
     		return true;
     	
     	return false;
     }
     
+    @Override 
     public int hashCode() {
-    	int hash_code = Integer.toString(xCoord).hashCode() * Integer.toString(yCoord).hashCode();
-    	return hash_code;
+    	return Objects.hash(xCoord, yCoord);
     }
 }

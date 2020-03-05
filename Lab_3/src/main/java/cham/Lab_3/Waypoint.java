@@ -11,29 +11,29 @@ public class Waypoint
     Location loc;
 
     /**
-     * The previous waypoint in this path, or <code>null</code> if this is
-     * the root of the A* search.
+     * Предыдущая путевая точка в этом пути или <code> null </ code>, если это
+     * корень поиска A *.
      **/
     Waypoint prevWaypoint;
 
     /**
-     * This field stores the total previous cost of getting from the starting
-     * location to this waypoint, through the chain of waypoints.  This is an
-     * actual cost of following the path; it does not include any estimates.
+     * В этом поле хранится общая предыдущая стоимость получения от стартовой
+     * местоположение до этой путевой точки, через цепочку путевых точек. Это
+     * фактическая стоимость следования по пути; это не включает никаких оценок.
      **/
     private float prevCost;
 
     /**
-     * This field stores an estimate of the remaining cost of traveling from
-     * this waypoint to the final destination.
+     * В этом поле хранится оценка оставшейся стоимости поездки из
+     * эта путевая точка до конечного пункта назначения.
      **/
     private float remainingCost;
 
 
     /**
-     * Construct a new waypoint for the specified location.  A previous waypoint
-     * can optionally be specified, or the reference can be <code>null</code> to
-     * indicate that the waypoint is the start of the path.
+     * Построить новую путевую точку для указанного местоположения. Предыдущая путевая точка
+     * необязательно может быть указан, или ссылка может быть <code> null </ code> на
+     * указывает, что путевая точка является началом пути.
      **/
     public Waypoint(Location loc, Waypoint prevWaypoint)
     {
@@ -41,15 +41,15 @@ public class Waypoint
         this.prevWaypoint = prevWaypoint;
     }
 
-    /** Returns the location of the waypoint. **/
+    /** Возвращает местоположение путевой точки. **/
     public Location getLocation()
     {
         return loc;
     }
     
     /**
-     * Returns the previous waypoint in the path, or <code>null</code> if this
-     * is the start of the path.
+     * Возвращает предыдущую путевую точку в пути или <code> null </ code>, если это
+     * это начало пути.
      **/
     public Waypoint getPrevious()
     {
@@ -57,9 +57,9 @@ public class Waypoint
     }
     
     /**
-     * This mutator allows both the previous cost and the remaining cost to be
-     * set in one method call.  Normally these values will be set at the same
-     * time anyway.
+     * Этот мутатор позволяет использовать как предыдущую, так и оставшуюся стоимость
+     * устанавливается в одном вызове метода. Обычно эти значения будут установлены одинаково
+     * время в любом случае.
      **/
     public void setCosts(float prevCost, float remainingCost)
     {
@@ -68,8 +68,8 @@ public class Waypoint
     }
 
     /**
-     * Returns the actual cost of getting to this point from the starting
-     * location, through the series of waypoints in this chain.
+     * Возвращает фактическую стоимость достижения этой точки с самого начала
+     * местоположение, через ряд точек в этой цепочке.
      **/
     public float getPreviousCost()
     {
@@ -77,8 +77,8 @@ public class Waypoint
     }
 
     /**
-     * Returns an estimate of the remaining cost of traveling from this
-     * point to the final destination.
+     * Возвращает оценку оставшейся стоимости проезда от этого
+     * указать на конечный пункт назначения.
      **/
     public float getRemainingCost()
     {
@@ -86,10 +86,10 @@ public class Waypoint
     }
 
     /**
-     * Returns the total cost estimate for this waypoint.  This includes the
-     * actual cost of getting to this point from the starting location, plus
-     * the estimate of the remaining cost of traveling from this point to
-     * the final destination.
+     * Возвращает общую стоимость оценки для этой путевой точки. Это включает в себя
+     * фактическая стоимость проезда к этой точке из начальной точки плюс
+     * оценка оставшейся стоимости проезда от этого пункта до
+     * пункт назначения.
      **/
     public float getTotalCost()
     {

@@ -1,6 +1,7 @@
 package cham.Lab_3;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class stores the basic state necessary for the A* algorithm to compute a
@@ -15,7 +16,7 @@ public class AStarState
     private Map2D map;
     
     private HashMap<Location, Waypoint> open_waypoint_list = new HashMap<Location, Waypoint>();
-    private HashMap<Location, Waypoint> close_waupoint_list = new HashMap<Location, Waypoint>();
+    private HashMap<Location, Waypoint> close_waypoint_list = new HashMap<Location, Waypoint>();
 
 
     /**
@@ -36,33 +37,52 @@ public class AStarState
     }
 
     /**
-     * This method scans through all open waypoints, and returns the waypoint
-     * with the minimum total cost.  If there are no open waypoints, this method
-     * returns <code>null</code>.
+     * Этот метод просматривает все открытые путевые точки и возвращает путевую точку
+     * с минимальной общей стоимостью. Если нет открытых путевых точек, этот метод
+     * возвращает <code> null </ code>.
      **/
     public Waypoint getMinOpenWaypoint()
     {
-        // TODO:  Implement.
-        return null;
+    	Waypoint output = (Waypoint)open_waypoint_list.values().toArray()[0];
+    	float cost = output.getTotalCost();
+    	
+        if(numOpenWaypoints() != 0) {
+        	for(Map.Entry<Location, Waypoint> entry : open_waypoint_list.entrySet()) {
+        		
+        		if(cost >= entry.getValue().getTotalCost()) {
+        			output = entry.getValue();
+        			cost = output.getTotalCost();
+        		}
+        	}
+        }
+        return output;
     }
 
     /**
-     * This method adds a waypoint to (or potentially updates a waypoint already
-     * in) the "open waypoints" collection.  If there is not already an open
-     * waypoint at the new waypoint's location then the new waypoint is simply
-     * added to the collection.  However, if there is already a waypoint at the
-     * new waypoint's location, the new waypoint replaces the old one <em>only
-     * if</em> the new waypoint's "previous cost" value is less than the current
-     * waypoint's "previous cost" value.
+     * Этот метод добавляет путевую точку к (или потенциально обновляет путевую точку уже
+     * в) коллекция "открытых путевых точек". Если там уже нет открытого
+     * путевая точка на месте новой путевой точки, тогда новая путевая точка просто
+     * добавлено в коллекцию. Однако, если уже есть путевая точка на
+     * местоположение новой путевой точки, новая путевая точка заменяет только старую <em> only
+     * if </ em> значение "предыдущей стоимости" новой путевой точки меньше текущей
+     * значение «предыдущей стоимости» путевой точки.
      **/
     public boolean addOpenWaypoint(Waypoint newWP)
     {
-        // TODO:  Implement.
-        return false;
+    	Waypoint oldWP = open_waypoint_list.get(newWP.getLocation());
+    	if(oldWP == null) {
+    		open_waypoint_list.put(newWP.getLocation(), newWP);
+    		return true;
+    	}else {
+    		if(oldWP.getPreviousCost() > newWP.getPreviousCost()) {
+    			open_waypoint_list.put(newWP.getLocation(), newWP);
+    		}
+    	}
+    	return false;
     }
 
 
-    /** Returns the current number of open waypoints. **/
+    /** Возвращает текущее количество открытых путевых точек. **/
     public int numOpenWaypoints()
     {
     	return open_waypoint_list.size();
@@ -70,21 +90,25 @@ public class AStarState
 
 
     /**
-     * This method moves the waypoint at the specified location from the
-     * open list to the closed list.
+     * Этот метод перемещает путевую точку в указанном месте из
+     * открыть список к закрытому списку.
      **/
     public void closeWaypoint(Location loc)
     {
-        // TODO:  Implement.
+        Waypoint stream = open_waypoint_list.remove(loc);
+        close_waypoint_list.put(loc, stream);
+        
     }
 
     /**
-     * Returns true if the collection of closed waypoints contains a waypoint
-     * for the specified location.
+     * Возвращает true, если коллекция закрытых путевых точек содержит путевую точку
+     * для указанного места.
      **/
     public boolean isLocationClosed(Location loc)
     {
-        // TODO:  Implement.
+        if(close_waypoint_list.get(loc) != null) {
+        	return true;
+        }
         return false;
     }
 }
