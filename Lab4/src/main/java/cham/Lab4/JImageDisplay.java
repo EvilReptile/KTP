@@ -8,6 +8,7 @@ import javax.swing.JComponent;
 
 public class JImageDisplay extends JComponent{
 
+	private static final long serialVersionUID = 1889239229248361658L;
 	/**
 	 * Класс реализации компонента отрисовки фрактала в окне 
 	 */

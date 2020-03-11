@@ -11,12 +11,13 @@ import javax.swing.JFrame;
 
 public class GUI extends JFrame implements ActionListener{
 	
+	private static final long serialVersionUID = -3603744653970464775L;
 	/**
 	 * Класс реализации GUI
 	 */
 
-	JImageDisplay image;
-	JButton button;
+	private JImageDisplay image;
+	private JButton button;
 	
 	public GUI(Dimension dim) {
         // Задание параметров окна
