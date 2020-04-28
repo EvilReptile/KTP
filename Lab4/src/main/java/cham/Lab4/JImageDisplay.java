@@ -8,7 +8,6 @@ import javax.swing.JComponent;
 
 public class JImageDisplay extends JComponent{
 
-	private static final long serialVersionUID = 1889239229248361658L;
 	/**
 	 * Класс реализации компонента отрисовки фрактала в окне 
 	 */
@@ -16,7 +15,9 @@ public class JImageDisplay extends JComponent{
 	private BufferedImage buf_image;
 	
 	public JImageDisplay(int height, int width) {
-		buf_image = new BufferedImage(height, width, BufferedImage.TYPE_INT_RGB);
+		// Создание буфера для отрисовки изображения
+		buf_image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		// Задание размера компоненту
 		this.setPreferredSize(new Dimension(width, height));
 	}
 	

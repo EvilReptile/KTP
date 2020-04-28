@@ -3,8 +3,8 @@ package cham.Lab4;
 import java.awt.geom.Rectangle2D;
 
 /**
- * This class provides the common interface and operations for fractal
- * generators that can be viewed in the Fractal Explorer.
+ * Этот класс предоставляет общий интерфейс и операции для фрактала
+ * генераторы, которые можно просматривать в Fractal Explorer.
  */
 public abstract class FractalGenerator {
 
